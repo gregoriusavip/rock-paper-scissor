@@ -19,7 +19,7 @@ function getRandomInt(max) {
 function getComputerChoice(){
     // generate a random integer of either 0, 1, or 2
     const computerChoice = getRandomInt(3);
-    
+
     if (computerChoice === 0){
         return 'rock';
     }
@@ -28,5 +28,26 @@ function getComputerChoice(){
     }
     else if (computerChoice === 2){
         return 'scissor';
+    }
+}
+
+/**
+ * Prompt the user for the input equivalent to either rock, paper, or scissors.
+ * Loop until the input is valid. Return the user's input.
+ * 
+ * @return {string} user's valid input of either 'rock', 'paper', or 'scissors'.
+ */
+function getHumanChoice(){
+    let userPrompt = "Enter your move. Valid choices are (without quotation) 'rock', 'paper', or 'scissors'"
+    let humanChoice;
+    while (true){
+        humanChoice = prompt(userPrompt);
+        if (['rock', 'paper', 'scissors'].includes(humanChoice)) {
+            return humanChoice;
+        }
+        else {
+            userPrompt = "Invalid input.\n" + 
+                "Enter your move. Valid choices are (without quotation) 'rock', 'paper', or 'scissors'";
+        }
     }
 }
