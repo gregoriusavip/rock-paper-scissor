@@ -38,11 +38,11 @@ function getComputerChoice(){
  * @return {string} user's valid input of either 'rock', 'paper', or 'scissors'.
  */
 function getHumanChoice(){
-    let userPrompt = "Enter your move. Valid choices are (without quotation) 'rock', 'paper', or 'scissors'"
+    let userPrompt = "Enter your move. Valid choices are (without quotation, case-insensitive) 'rock', 'paper', or 'scissors'"
     let humanChoice;
     while (true){
         humanChoice = prompt(userPrompt);
-        if (['rock', 'paper', 'scissors'].includes(humanChoice)) {
+        if (['rock', 'paper', 'scissors'].includes(humanChoice.toLowerCase())) {
             return humanChoice;
         }
         else {
