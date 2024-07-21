@@ -95,6 +95,10 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
+/**
+ * Function to play the game for 5 rounds.
+ * Determine the winner based of the total scores.
+ */
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
