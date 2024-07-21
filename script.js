@@ -54,3 +54,50 @@ function getHumanChoice(){
 
 let humanScore = 0;
 let computerScore = 0;
+
+/**
+ * Play a round of rock paper scissor using simple algorithm to determine the winner.
+ * 
+ * @param {string} humanChoice The user's input validated by getHumanChoice()
+ * @param {string} computerChoice The computer's input randomized by getComputerChoice()
+ */
+function playRound(humanChoice, computerChoice){
+    if (humanChoice.toLowerCase() === computerChoice){
+        console.log("It's a draw!");
+    }
+    else if(humanChoice.toLowerCase() === "rock"){
+        if(computerChoice === "paper"){
+            console.log("You lose! Paper beats Rock");
+            computerScore += 1;
+        }
+        else {
+            console.log("You win! Rock beats Scissors");
+            humanScore += 1;
+        }
+    }
+    else if(humanChoice.toLowerCase() === "paper"){
+        if(computerChoice === "scissors"){
+            console.log("You lose! Scissors beats Paper");
+            computerScore += 1;
+        }
+        else {
+            console.log("You win! Paper beats Rock");
+            humanScore += 1;
+        }
+    }
+    else if(humanChoice.toLowerCase() === "scissors"){
+        if(computerChoice === "rock"){
+            console.log("You lose! Rock beats Scissors");
+            computerScore += 1;
+        }
+        else {
+            console.log("You win! Scissors beats Paper");
+            humanScore += 1;
+        }
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
