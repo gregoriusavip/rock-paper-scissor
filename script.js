@@ -11,9 +11,9 @@ function getRandomInt(max) {
   }
 
 /**
- * Randomly generate computer choice of either 'rock', 'paper', or 'scissor'.
+ * Randomly generate computer choice of either 'rock', 'paper', or 'scissors'.
  *
- * @return {string} randomly generate choice of either 'rock', 'paper', or 'scissor'.
+ * @return {string} randomly generate choice of either 'rock', 'paper', or 'scissors'.
  */
 
 function getComputerChoice(){
@@ -27,7 +27,7 @@ function getComputerChoice(){
         return 'paper';
     }
     else if (computerChoice === 2){
-        return 'scissor';
+        return 'scissors';
     }
 }
 
