@@ -37,27 +37,6 @@ function getComputerChoice(){
 }
 
 /**
- * Prompt the user for the input equivalent to either rock, paper, or scissors.
- * Loop until the input is valid. Return the user's input.
- * 
- * @return {string} user's valid input of either 'rock', 'paper', or 'scissors'.
- */
-function getHumanChoice(){
-    let userPrompt = "Enter your move. Valid choices are (without quotation, case-insensitive) 'rock', 'paper', or 'scissors'"
-    let humanChoice;
-    while (true){
-        humanChoice = prompt(userPrompt);
-        if (['rock', 'paper', 'scissors'].includes(humanChoice.toLowerCase())) {
-            return humanChoice;
-        }
-        else {
-            userPrompt = "Invalid input.\n" + 
-                "Enter your move. Valid choices are (without quotation) 'rock', 'paper', or 'scissors'";
-        }
-    }
-}
-
-/**
  * Play a round of rock paper scissor using simple algorithm to determine the winner.
  * 
  * @param {string} humanChoice The user's input validated by getHumanChoice()
