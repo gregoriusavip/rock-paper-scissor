@@ -1,3 +1,8 @@
+// Global Variables
+let humanScore = 0;
+let computerScore = 0;
+const resultDiv = document.querySelector('#result');
+
 /**
  * Randomly generate an integer from 0 (inclusive) to max (exclusive).
  * Not intended for max < 0.
@@ -57,74 +62,67 @@ function getHumanChoice(){
  * 
  * @param {string} humanChoice The user's input validated by getHumanChoice()
  * @param {string} computerChoice The computer's input randomized by getComputerChoice()
- * @return {boolean} `true` if the player won, `false` otherwise
  */
 function playRound(humanChoice, computerChoice){
     if (humanChoice.toLowerCase() === computerChoice){
-        console.log("It's a draw!");
+        resultDiv.textContent = `It's a Draw! Score: ${humanScore} to ${computerScore}`;
     }
     else if(humanChoice.toLowerCase() === "rock"){
         if(computerChoice === "paper"){
-            console.log("You lose! Paper beats Rock");
-            return false;
+            computerScore += 1;
+            resultDiv.textContent = `You lose! Paper beats Rock. Score: ${humanScore} to ${computerScore}`;
         }
         else {
-            console.log("You win! Rock beats Scissors");
-            return true;
+            humanScore += 1;
+            resultDiv.textContent = (`You win! Rock beats Scissors. Score: ${humanScore} to ${computerScore}`);
         }
     }
     else if(humanChoice.toLowerCase() === "paper"){
         if(computerChoice === "scissors"){
-            console.log("You lose! Scissors beats Paper");
-            return false;
+            computerScore += 1;
+            resultDiv.textContent = (`You lose! Scissors beats Paper. Score: ${humanScore} to ${computerScore}`);
         }
         else {
-            console.log("You win! Paper beats Rock");
-            return true;
+            humanScore += 1;
+            resultDiv.textContent = (`You win! Paper beats Rock. Score: ${humanScore} to ${computerScore}`);
         }
     }
     else if(humanChoice.toLowerCase() === "scissors"){
         if(computerChoice === "rock"){
-            console.log("You lose! Rock beats Scissors");
-            return false;
-        }
-        else {
-            console.log("You win! Scissors beats Paper");
-            return true;
-        }
-    }
-}
-
-/**
- * Function to play the game for 5 rounds.
- * Determine the winner based of the total scores.
- */
-function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++){
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-
-        if(playRound(humanSelection, computerSelection)){
-            humanScore += 1;
-        }
-        else {
             computerScore += 1;
+            resultDiv.textContent = (`You lose! Rock beats Scissors. Score: ${humanScore} to ${computerScore}`);
+        }
+        else {
+            humanScore += 1;
+            resultDiv.textContent = (`You win! Scissors beats Paper. Score: ${humanScore} to ${computerScore}`);
         }
     }
-
-    if (humanScore > computerScore){
-        console.log("You win!");
+    if(humanScore === 5){
+        resultDiv.textContent += `. You have reached the total score of 5. You are the winner!`;
+        humanScore = 0;
+        computerScore = 0;
     }
-    else if (humanScore === computerScore){
-        console.log("It's a tie!")
+    else if(computerScore === 5){
+        resultDiv.textContent += `. Computer has reached the total score of 5. You lose!`;
+        humanScore = 0;
+        computerScore = 0;
     }
-    else {
-        console.log("You lose!")
-    }
-    console.log(`Final Score: ${humanScore}-${computerScore}`);
 }
 
-playGame();
+let buttonsCont = document.querySelector("#buttons");
+
+buttonsCont.addEventListener('click', (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case "rock":
+            playRound("Rock", getComputerChoice());
+            break;
+        case "paper":
+            playRound("Paper", getComputerChoice());
+            break;
+        case "scissors":
+            playRound("Scissors", getComputerChoice());
+            break;
+    }
+});
